@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
 
-  resources :desks, only: [:index, :show, :new, :edit, :update, :destroy] do
+  resources :desks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:destroy]
