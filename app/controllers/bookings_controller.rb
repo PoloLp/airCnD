@@ -3,8 +3,6 @@ class BookingsController < ApplicationController
 def create
   @booking = Booking.new(booking_params)
   @booking.desk = Desk.find(params[:desk_id])
-  @booking.user = User.find(1)
-
   if @booking.save
     redirect_to desks_path
   else
