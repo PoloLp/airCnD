@@ -1,0 +1,12 @@
+<div>
+  <h3><%= "Average Rating : #{@desk.desk_average_rating}" %></h3>
+</div>
+
+<% @desk.bookings.each do |booking| %>
+  <% if booking.review.nil? == false %>
+    <ul>
+      <p><%= "Traveller name : #{booking.user.username}" %></p>
+      <li><%= booking.review %></li>
+    </ul>
+  <% end %>
+<% end %>
