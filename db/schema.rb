@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_091857) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "desk_id"
-    t.datetime "start_at"
+    t.date "start_at"
     t.datetime "end_at"
     t.string "review"
     t.integer "rating"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_091857) do
   end
 
   create_table "desks", force: :cascade do |t|
-    t.float "price"
+    t.decimal "price"
     t.string "title"
     t.string "description"
     t.bigint "user_id"
