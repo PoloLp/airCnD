@@ -8,5 +8,4 @@ class DesksController < ApplicationController
     @desk = Desk.find(params[:id])
     @booking = Booking.new
   end
-
 end
