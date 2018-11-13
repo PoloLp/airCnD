@@ -12,11 +12,11 @@ RSpec.describe "Booking", :type => :model do
   end
   let(:desk) do
     Desk.create!({
-      price: "10",
+      price: 10,
       title: "Le bureau du fanfreluche",
       description: "Mais quel bureau magnifique",
-      user_id: user.id
-      # address: "15 rue de la pompe, 75003 Paris",
+      user_id: user.id,
+      address: "15 rue de la pompe, 75003 Paris",
     })
   end
   let(:valid_attributes) do
@@ -35,9 +35,9 @@ RSpec.describe "Booking", :type => :model do
     expect(booking.review).to eq("This is a great desk")
   end
 
-  it "has a rating (stored as float)" do
-    booking = Booking.new(rating: 4.5)
-    expect(booking.rating).to eq(4.5)
+  it "has a rating (stored as integer)" do
+    booking = Booking.new(rating: 4)
+    expect(booking.rating).to eq(4)
   end
 
   it "Start_at cannot be blank" do
