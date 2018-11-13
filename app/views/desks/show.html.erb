@@ -1,8 +1,10 @@
-<h1><%= @desk.title %></h1>
-<p><%= @desk.description %></p>
-<p><%= @desk.price %>€/hour</p>
-  <%= simple_form_for [@desk, @booking] do |f| %>
-    <%= f.input :start_at, as: :datetime %>
-    <%= f.input :end_at, as: :datetime %>
-    <%= f.button :submit %>
-  <% end %>
+<div class="container">
+  <h1><%= @desk.title %></h1>
+  <p><%= @desk.description %></p>
+  <p><%= @desk.price %>€/hour</p>
+    <%= simple_form_for [@desk, @booking] do |f| %>
+      <%= f.input :start_at, as: :datetime %>
+      <%= f.input :end_at, as: :datetime %>
+      <%= f.button :submit %>
+    <% end %>
+</div>
