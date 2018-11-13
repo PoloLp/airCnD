@@ -20,7 +20,7 @@ puts 'Creating random desk for users...'
 User.all.each do |user|
   rand(1..6).to_i.times do
     desk = Desk.new(
-                    title: Faker::TvShows::Simpsons.location,
+                    title: Faker::Movies::StarWars.planet,
                     description: Faker::TvShows::GameOfThrones.quote,
                     price: rand(1..30).to_f,
                     address: Faker::TvShows::Simpsons.location,
@@ -37,7 +37,7 @@ xtime = Time.now
 
 20.times do
   id_user = rand(1..5).to_i
-  id_desk = User.find(id_user).desks.sample.id
+  id_desk = Desk.all.sample.id
   booking = Booking.new(
                         user_id: id_user,
                         desk_id: id_desk,
