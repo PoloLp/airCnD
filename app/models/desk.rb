@@ -5,4 +5,8 @@ class Desk < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true
   validates :address, presence: true
+
+  def desk_average_rating
+    self.bookings.average(:rating)
+  end
 end
