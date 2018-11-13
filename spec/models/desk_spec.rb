@@ -51,9 +51,9 @@ RSpec.describe "Desk", :type => :model do
     expect(desk).not_to be_valid
   end
 
-  it "has many reviews" do
+  it "has many bookings" do
     desk = Desk.new(valid_attributes)
-    expect(desk).to respond_to(:reviews)
+    expect(desk).to respond_to(:bookinks)
   end
 
   # it "should destroy child reviews when destroying self" do
