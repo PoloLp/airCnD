@@ -3,13 +3,15 @@
 
 require 'faker'
 
+Time.zone = 'Paris'
+
 puts '*' * 20
 puts 'Creating 5 fake users...'
 5.times do
   user = User.new(
     username: Faker::Movies::StarWars.character,
     email: Faker::Internet.email,
-    created_at: Time.now,
+    created_at: Time.current,
     password: "123456"
   )
   user.save!
@@ -33,7 +35,7 @@ puts 'Random desk for users created'
 puts '*' * 20
 
 puts 'Creating random bookings...'
-xtime = Time.now
+xtime = Time.current
 
 20.times do
   id_user = rand(1..5).to_i

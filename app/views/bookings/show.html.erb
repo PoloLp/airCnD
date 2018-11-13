@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @booking.start_at %></h1>
-  <p><%= @booking.end_at %></p>
+  <h1><%= @booking.start_at.strftime('%Y-%m-%d-%H-%M') %></h1>
+  <p><%= @booking.end_at.strftime('%Y-%m-%d-%H-%M') %></p>
   <p><%= @desk.title %></p>
 </div>
