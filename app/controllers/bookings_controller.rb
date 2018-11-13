@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 
 def show
   @booking = Booking.find(params[:id])
-  @desk = Desk.find(params[:id])
+  @desk = Desk.find(params[:desk_id])
 
 end
 
@@ -12,7 +12,7 @@ def create
   @booking.user = User.find(1)
 
   if @booking.save!
-    redirect_to desk_booking_path(@booking, @booking[:desk_id])
+    redirect_to desk_booking_path(@booking[:desk_id], @booking)
   else
     render "desks/show"
   end
