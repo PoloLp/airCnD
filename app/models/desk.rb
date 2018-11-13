@@ -7,6 +7,6 @@ class Desk < ApplicationRecord
   validates :address, presence: true
 
   def desk_average_rating
-    self.bookings.average(:rating)
+    self.bookings.average(:rating).round(1)
   end
 end
