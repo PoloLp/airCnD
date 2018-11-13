@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
 def create
   @booking = Booking.new(booking_params)
   @booking.desk = Desk.find(params[:desk_id])
+  @booking.user = User.find(1)
+
   if @booking.save
     redirect_to desks_path
   else
@@ -10,11 +12,9 @@ def create
   end
 end
 
+  private
 
-private
-
- def booking_params
-  params.require(:booking).permit(:start_at, :end_at)
- end
-
+  def booking_params
+    params.require(:booking).permit(:start_at, :end_at)
+  end
 end
