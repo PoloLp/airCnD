@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Desk", :type => :model do
   let(:valid_attributes) do
     {
-      price: "10",
+      price: 10.5,
       title: "Le bureau du fanfreluche",
       description: "Mais quel bureau magnifique",
       address: "15 rue de la pompe, 75003 Paris",
@@ -26,8 +26,8 @@ RSpec.describe "Desk", :type => :model do
   end
 
   it "has a price" do
-    desk = Desk.new(price: "10")
-    expect(desk.price).to eq("10")
+    desk = Desk.new(price: 10.5)
+    expect(desk.price).to eq(10.5)
   end
 
   it "title cannot be blank" do
