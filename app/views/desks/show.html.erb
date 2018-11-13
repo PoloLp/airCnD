@@ -10,7 +10,7 @@
         <%= simple_form_for [@desk, @booking] do |f| %>
           <%= f.input :start_at, as: :datetime, class: "form-control" %>
           <%= f.input :end_at, as: :datetime, class: "form-control" %>
-          <%= f.button :submit %>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
