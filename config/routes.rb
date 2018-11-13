@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  # root to: 'pages#home'
+  root to: 'desks#index'
 
-  resources :users, only: [:show, :new, :create, :edit, :update, :destroy]
+  devise_for :user
 
-  resources :desks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+  resources :desks, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :bookings, only: [:new, :create, :show]
   end
   resources :bookings, only: [:destroy]
