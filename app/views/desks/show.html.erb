@@ -1,8 +1,20 @@
-<h1><%= @desk.title %></h1>
-<p><%= @desk.description %></p>
-<p><%= @desk.price %>€/hour</p>
-  <%= simple_form_for [@desk, @booking] do |f| %>
-    <%= f.input :start_at, as: :datetime %>
-    <%= f.input :end_at, as: :datetime %>
-    <%= f.button :submit %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <h1><%= @desk.title %></h1>
+      <p><%= @desk.description %></p>
+      <p><%= @desk.price %>€/hour</p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="booking-container">
+        <%= simple_form_for [@desk, @booking] do |f| %>
+          <%= f.input :start_at, as: :datetime, class: "form-control" %>
+          <%= f.input :end_at, as: :datetime, class: "form-control" %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Back to desks", desks_path, class: "btn btn-warning " %>
+</div>
+
