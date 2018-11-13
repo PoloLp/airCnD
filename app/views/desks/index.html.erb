@@ -1,1 +1,19 @@
-<h1>test de l'index des desks</h1>
+
+<div class="container">
+  <div class="row">
+    <% @desks.each do |desk|%>
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to desk_path(desk) do %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('');">
+            <div class="card-category">Popular</div>
+            <div class="card-description">
+              <h2><%= desk.title %></h2>
+              <p><%= desk.price %>€</p>
+            </div>
+            <img class="card-user" src="">
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
