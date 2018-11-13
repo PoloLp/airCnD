@@ -4,6 +4,7 @@
       <h1><%= @desk.title %></h1>
       <p><%= @desk.description %></p>
       <p><%= @desk.price %>€/hour</p>
+    <%= cl_image_tag @desk.photo, height: 300, width: 400, crop: :fill %>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-container">

@@ -3,6 +3,7 @@ class DesksController < ApplicationController
 
   def index
     @desks = Desk.all
+  byebug
   end
 
   def show
@@ -27,6 +28,7 @@ class DesksController < ApplicationController
   private
 
   def desk_params
-    params.require(:desk).permit(:title, :address, :description, :price)
+    params.require(:desk).permit(:title, :address, :description,
+                                 :price, :photo)
   end
 end
