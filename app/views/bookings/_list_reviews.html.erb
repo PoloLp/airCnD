@@ -1,5 +1,12 @@
 <div>
-  <h3><%= "Average Rating : #{@desk.desk_average_rating}" %></h3>
+  <h3><%= "Average Rating " %>
+    <% @desk.desk_average_rating.to_i.times do %>
+      <span class="glyphicon glyphicon-star"></span>
+    <% end %>
+    <% (5 - (@desk.desk_average_rating.to_i)).times do %>
+      <span class="glyphicon glyphicon-star-empty"></span>
+    <% end %>
+  </h3>
 </div>
 <ul>
 <% @desk.bookings.each do |booking| %>
