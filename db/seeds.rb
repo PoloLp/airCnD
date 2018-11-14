@@ -73,7 +73,7 @@ puts 'Creating random bookings...'
 xtime = Time.current
 
 20.times do
-  id_user = rand(1..5).to_i
+  id_user = rand(User.all.first.id..User.all.last.id).to_i
   id_desk = Desk.all.sample.id
   booking = Booking.new(
                         user_id: id_user,
