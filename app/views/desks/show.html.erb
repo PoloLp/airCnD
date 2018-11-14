@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom:40px ">
   <div class="row card-show">
     <div class="col-xs-12 col-sm-8 img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= safe_desk_img_path(@desk) %>')">
@@ -16,8 +16,8 @@
       </div>
     </div>
   </div>
-
-  <%= render 'bookings/list_reviews'  %>
-
+  <div style="margin: 30px 0px">
+    <%= render 'bookings/list_reviews'  %>
+  </div>
   <%= link_to "Back to desks", root_path, class: "btn btn-warning " %>
 </div>
