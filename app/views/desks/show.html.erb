@@ -17,6 +17,8 @@
     </div>
   </div>
 
+  <div id="map" style="width: 500px; height: 300px;" data-markers="<%= @markers.to_json %>"></div>
+
   <%= render 'bookings/list_reviews'  %>
 
   <%= link_to "Back to desks", root_path, class: "btn btn-warning " %>

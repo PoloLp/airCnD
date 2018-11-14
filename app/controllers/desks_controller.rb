@@ -8,6 +8,13 @@ class DesksController < ApplicationController
   def show
     @desk = Desk.find(params[:id])
     @booking = Booking.new
+
+    @markers =
+      {
+        lng: @desk.longitude,
+        lat: @desk.latitude,
+        infoWindow: { content: render_to_string(partial: "/desks/map_window", locals: { desk: @desk }) }
+      }
   end
 
   def new
