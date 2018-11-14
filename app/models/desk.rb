@@ -6,7 +6,9 @@ class Desk < ApplicationRecord
   validates :description, presence: true
   validates :address, presence: true
 
+  mount_uploader :photo, PhotoUploader
+
   def desk_average_rating
-    self.bookings.average(:rating).round(1)
+    return self.bookings.average(:rating).round(1) unless self.bookings.average(:rating).nil?
   end
 end

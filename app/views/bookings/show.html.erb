@@ -1,4 +1,11 @@
-<div class="container">
+<% if !@desk.photo.file.nil? %>
+  <% i_path = cl_image_path @desk.photo, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <% i_path = '' %>
+<% end %>
+
+<div class="container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+  url('<%= i_path %>')">
   <h1><%= @booking.start_at.strftime('%Y-%m-%d-%H-%M') %></h1>
   <p><%= @booking.end_at.strftime('%Y-%m-%d-%H-%M') %></p>
   <p><%= @desk.title %></p>

@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-8">
+    <% if !@desk.photo.file.nil? %>
+      <% i_path = cl_image_path @desk.photo, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <% i_path = '' %>
+    <% end %>
+    <div class="col-xs-12 col-sm-8" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= i_path %>')">
       <h1><%= @desk.title %></h1>
       <p><%= @desk.description %></p>
       <p><%= @desk.price %>€/hour</p>
