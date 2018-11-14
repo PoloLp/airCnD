@@ -3,8 +3,11 @@
   <div class="img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
     url('<%= safe_desk_img_path(@booking.desk) %>')">
 
+    <div class="booking-card"><p>Booked the <%= @booking.start_at.strftime('%Y-%m-%d') %> at <%= @booking.start_at.strftime('%H:%M') %></p>
+    <p> Till <%= @booking.end_at.strftime('%Y-%m-%d') %> at <%= @booking.end_at.strftime('%H:%M') %></p></div>
+     <h2 class="right-bottom">Booked</h2>
   </div>
-  <h1><%= @booking.start_at.strftime('%Y-%m-%d-%H-%M') %></h1>
-    <p><%= @booking.end_at.strftime('%Y-%m-%d-%H-%M') %></p>
-    <p><%= @desk.title %></p>
+
+
+
 </div>

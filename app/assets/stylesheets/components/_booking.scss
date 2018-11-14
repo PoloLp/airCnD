@@ -1,0 +1,18 @@
+.right-bottom{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background-color: $green;
+  color:white;
+  padding: 20px;
+  border-radius:5px;
+}
+
+.booking-card{
+  background-color: rgba(240, 240, 240, 0.9);
+  color: black;
+  padding: 40px;
+  width: 400px;
+  border-radius: 5px;
+  text-align: center;
+}
