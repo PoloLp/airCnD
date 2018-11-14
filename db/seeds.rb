@@ -72,11 +72,12 @@ puts '*' * 20
 puts 'Creating random bookings...'
 xtime = Time.current
 
+users = User.all
+
 20.times do
-  id_user = rand(User.all.first.id..User.all.last.id).to_i
   id_desk = Desk.all.sample.id
   booking = Booking.new(
-                        user_id: id_user,
+                        user: users.sample,
                         desk_id: id_desk,
                         start_at: xtime,
                         end_at: (xtime + 1000),
