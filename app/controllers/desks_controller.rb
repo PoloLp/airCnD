@@ -3,7 +3,6 @@ class DesksController < ApplicationController
 
   def index
     @desks = Desk.all
-  byebug
   end
 
   def show
