@@ -33,9 +33,9 @@ URL_LIST = [
 
 x_desk = 0
 
-Booking.destroy_all
 User.destroy_all
 Desk.destroy_all
+Booking.destroy_all
 
 puts '*' * 20
 puts 'Creating 5 fake users...'
