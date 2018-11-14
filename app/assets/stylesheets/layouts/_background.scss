@@ -1,3 +1,8 @@
 body {
-  background-color: white;
+    background: linear-gradient(rgba(150, 160, 100, 0.3), rgba(0, 20, 20, 0.0)), url('https://images.unsplash.com/photo-1497864149936-d3163f0c0f4b?ixlib=rb-0.3.5…EyMDd9&s=362d7bf…&auto=format&fit=crop&w=1350&q=80') fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+h1{
+  color:white;
 }

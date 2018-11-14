@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom:40px ">
   <div class="row card-show">
     <div class="col-xs-12 col-sm-8 img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= safe_desk_img_path(@desk) %>')">
@@ -9,8 +9,10 @@
     <div class="col-xs-12 col-sm-4">
       <div class="booking-container">
         <%= simple_form_for [@desk, @booking] do |f| %>
-          <%= f.input :start_at, as: :datetime, class: "form-control" %>
-          <%= f.input :end_at, as: :datetime, class: "form-control" %>
+          <%= f.label :Start,style: "color:white" %>
+          <%= f.input_field :start_at, as: :datetime, class: "form-control" %>
+          <%= f.label :End,style: "color:white"  %>
+          <%= f.input_field :end_at, as: :datetime, class: "form-control" %>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
@@ -19,7 +21,9 @@
 
   <div id="map" style="width: 500px; height: 300px;" data-markers="<%= @markers.to_json %>"></div>
 
-  <%= render 'bookings/list_reviews'  %>
+  <div class="review">
+    <%= render 'bookings/list_reviews'  %>
+  </div>
 
   <%= link_to "Back to desks", root_path, class: "btn btn-warning " %>
 </div>
