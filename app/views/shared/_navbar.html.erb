@@ -4,6 +4,14 @@
     <%= image_tag "https://www.alorica.com/wp-content/uploads/2016/11/career_WAH.png", height: 50 %>
   <% end %>
 
+  <!-- Searchbar -->
+  <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a desk" %>
+  <% end %>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 

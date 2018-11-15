@@ -4,8 +4,6 @@ class DesksController < ApplicationController
   def index
     @desks = Desk.all
 
-    # @desks = Desk.where.not(latitude: nil, longitude: nil)
-
     @markers = @desks.map do |desk|
       {
         lng: desk.longitude,
@@ -13,6 +11,8 @@ class DesksController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/desks/map_window", locals: { desk: desk }) }
       }
     end
+
+    @desks = Desk.search_by_address(params[:id])
   end
 
   def show
