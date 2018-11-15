@@ -1,44 +1,66 @@
 <div class="container">
-
    <h1 class= "text-center"><%= "Congrats #{@user.username}! You just found your profil page" %></h1>
-
-  <div class="row">
-    <h1><%= "Username : #{@user.username}" %></h1>
-    <h1><%= "email adress : #{@user.email}" %></h1>
-    <h1><%= "Your account was created : #{@user.created_at}" %></h1>
-    <h1><%= "Last update on your account : #{@user.updated_at}" %></h1>
-  </div>
-
-  <div class="row">
-    <h1 class= "text-center">Your desks</h1>
-    <h1>Please find all your desks bellow</h1>
-      <% @user.desks.reverse.each do |desk|%>
-        <div class="col-xs-12 col-sm-4">
-          <%= link_to desk_path(desk) do %>
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-           url('<%= safe_desk_img_path(desk) %>')">
-              <div class="card-category">Popular</div>
-              <div class="card-description">
-                <h2><%= desk.title %></h2>
-                <p><%= desk.price %>€</p>
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Profil</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Desks</a></li>
+      <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">My bookings</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <h3><%= "Username : #{@user.username}" %></h3>
+        <h3><%= "email adress : #{@user.email}" %></h3>
+        <%= link_to "Edit your profil", edit_user_registration_path, class: "btn btn-warning" %>
+        <h3><%= "Your account was created : #{@user.created_at}" %></h3>
+        <h3><%= "Last update on your account : #{@user.updated_at}" %></h3>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <h1 class= "text-center">Your desks</h1>
+        <h1 class= "text-center">Please find all your desks bellow</h1>
+        <% @user.desks.reverse.each do |desk|%>
+          <div class="col-xs-12 col-sm-4">
+            <%= link_to desk_path(desk) do %>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url('<%= safe_desk_img_path(desk) %>')">
+                <div class="card-category">Popular</div>
+                <div class="card-description">
+                  <h2><%= desk.title %></h2>
+                  <p><%= desk.price %>€</p>
+                </div>
+                <img class="card-user" src="">
               </div>
-              <img class="card-user" src="">
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages">
+        <h1 class= "text-center">Your bookings</h1>
+        <h1 class= "text-center">Please find all your bookings bellow</h1>
+        <% @user.bookings.reverse.each do |booking|%>
+          <div class="booking-container">
+            <%= link_to desk_path(booking.desk) do %>
+              <div class="card img img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+              url('<%= safe_desk_img_path(booking.desk) %>')">
+                <div class="card-category">
+                  Popular
+                </div>
+                <div class="card-description">
+                  <h2><%= booking.desk.title %></h2>
+                  <p><%= booking.desk.price %>€</p>
+                </div>
+                <img class="card-user" src="">
+              </div>
+            <% end %>
+            <div class="booking-info">
+              <h2><%= booking.desk.title %></h2>
+              <h3><%= booking.start_at %></h3>
+              <h3><%= booking.end_at %></h3>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-  </div>
-
-  <div class="row">
-    <h1 class= "text-center">Your bookings</h1>
-    <h1>Please find all your bookings bellow</h1>
-      <% @user.bookings.reverse.each do |booking|%>
-        <div class="col-xs-12 col-sm-4">
-            <h1><%= booking.user.username %></h1>
-            <h1><%= booking.start_at %>€</p>
-            <h1><%= booking.end_at %>€</p>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
