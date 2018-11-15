@@ -137,12 +137,12 @@ puts 'Creating random desk for users...'
 User.all.each do |user|
   rand(1..3).to_i.times do
     picked_url = URL_LIST[x_desk]
-    picked_address = URL_LIST[x_address]
+    picked_address = ADDRESS_LIST[x_address]
     desk = Desk.new(
                     title: Faker::Movies::StarWars.planet,
                     description: Faker::TvShows::GameOfThrones.quote,
                     price: rand(1..30).to_f,
-                    address: Faker::Address.full_address,
+                    address: picked_address,
                     user: user
                     )
     desk.remote_photo_url = picked_url
