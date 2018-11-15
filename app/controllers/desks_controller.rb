@@ -2,7 +2,11 @@ class DesksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @desks = Desk.all
+    if params[:query].present?
+      @desks = Desk.search_by_address_and_title("%#{params[:query]}%")
+    else
+      @desks = Desk.all
+    end
 
     @markers = @desks.map do |desk|
       {
@@ -11,8 +15,6 @@ class DesksController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/desks/map_window", locals: { desk: desk }) }
       }
     end
-
-    @desks = Desk.search_by_address(params[:id])
   end
 
   def show
