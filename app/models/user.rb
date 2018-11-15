@@ -9,6 +9,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :avatar, PhotoUploader
+
   def list_desks
     Desk.all.select { |desk| desk.user == self }
   end
