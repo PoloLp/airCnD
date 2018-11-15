@@ -5,8 +5,9 @@
       <div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
          url('<%= safe_desk_img_large_path(@desk) %>')">
         <h1><%= @desk.title %></h1>
+        <p><%= @desk.address %></p>
         <p><%= @desk.description %></p>
-        <p><%= @desk.price %>€/hour</p>
+        <p class="price"><%= @desk.price %> €/hour</p>
       </div>
       <div id="map" style="height: 250px;" data-markers="<%= @markers.to_json %>"></div>
     </div>
