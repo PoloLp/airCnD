@@ -1,1 +1,7 @@
-<h5><%= @desk.address %></h5>
+<% if @desk %>
+  <h5><%= @desk.address %></h5>
+<% else %>
+  <h5><%= desk.address %></h5>
+<% end %>
+
+

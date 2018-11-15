@@ -24,3 +24,4 @@ dotenvFiles.forEach((dotenvFile) => {
 environment.plugins.prepend('Environment', new webpack.EnvironmentPlugin(JSON.parse(JSON.stringify(process.env))))
 
 module.exports = environment
+

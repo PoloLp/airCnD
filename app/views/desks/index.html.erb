@@ -1,3 +1,5 @@
+<div id="map-index" style="width: 100%; height: 500px;" data-markers="<%= @markers.to_json %>"></div>
+
 <div class="container">
   <div class="row">
     <% @desks.reverse.each do |desk|%>
@@ -9,6 +11,7 @@
             <div class="card-description">
               <h2><%= desk.title %></h2>
               <p><%= desk.price %>€</p>
+
             </div>
             <img class="card-user" src="">
           </div>
