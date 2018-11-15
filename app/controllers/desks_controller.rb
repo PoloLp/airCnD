@@ -2,9 +2,11 @@ class DesksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @desks = Desk.all
-
-    # @desks = Desk.where.not(latitude: nil, longitude: nil)
+    if params[:query].present?
+      @desks = Desk.search_by_address_and_title("%#{params[:query]}%")
+    else
+      @desks = Desk.all
+    end
 
     @markers = @desks.map do |desk|
       {
