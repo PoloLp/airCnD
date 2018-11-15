@@ -9,5 +9,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates_uniqueness_of :username
+  def list_desks
+    Desk.all.select { |desk| desk.user == self }
+  end
+
+  def list_bookings
+    Booking.all.select { |booking| booking.user == self }
+  end
 end

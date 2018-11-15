@@ -40,7 +40,7 @@ User.destroy_all
 
 puts '*' * 20
 puts 'Creating 20 fake users...'
-5.times do
+20.times do
   user = User.new(
     username: Faker::Movies::StarWars.character,
     email: Faker::Internet.email,
