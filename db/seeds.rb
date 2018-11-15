@@ -2,6 +2,7 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 require 'faker'
+Faker::Config.locale = 'fr'
 
 Time.zone = 'Paris'
 
@@ -38,7 +39,7 @@ Desk.destroy_all
 User.destroy_all
 
 puts '*' * 20
-puts 'Creating 5 fake users...'
+puts 'Creating 20 fake users...'
 5.times do
   user = User.new(
     username: Faker::Movies::StarWars.character,
@@ -46,23 +47,28 @@ puts 'Creating 5 fake users...'
     created_at: Time.current,
     password: "123456"
   )
-  user.save!
+    user.save
 end
-puts '5 fake users created'
+puts 'Fake users created'
+
 puts '*' * 20
 puts 'Creating random desk for users...'
 User.all.each do |user|
-  rand(1..6).to_i.times do
+  rand(1..3).to_i.times do
     picked_url = URL_LIST[x_desk]
     desk = Desk.new(
                     title: Faker::Movies::StarWars.planet,
                     description: Faker::TvShows::GameOfThrones.quote,
                     price: rand(1..30).to_f,
-                    address: Faker::TvShows::Simpsons.location,
-                    user_id: user.id
+                    address: Faker::Address.full_address,
+                    user: user
                     )
     desk.remote_photo_url = picked_url
+
     desk.save!
+
+
+
     x_desk < 22 ? x_desk += 1 : x_desk = 0
   end
 end
@@ -73,12 +79,13 @@ puts 'Creating random bookings...'
 xtime = Time.current
 
 users = User.all
+desks = Desk.all
 
 20.times do
   id_desk = Desk.all.sample.id
   booking = Booking.new(
                         user: users.sample,
-                        desk_id: id_desk,
+                        desk: desks.sample,
                         start_at: xtime,
                         end_at: (xtime + 1000),
                         review: Faker::Movies::StarWars.quote,

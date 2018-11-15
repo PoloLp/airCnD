@@ -4,7 +4,10 @@ class User < ApplicationRecord
   has_many :desks
   has_many :bookings
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # validates_uniqueness_of :username
 end
