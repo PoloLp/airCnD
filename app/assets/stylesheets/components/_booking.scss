@@ -6,6 +6,7 @@
   color:white;
   padding: 20px;
   border-radius:5px;
+  font-size: 40px;
 }
 
 .booking-card{
@@ -18,5 +19,15 @@
 }
 .review{
   color:white;
-  margin: 30px 0px;
+}
+
+@media (max-width: 640px) {
+ .booking-card{
+  width: 200px;
+  font-size: 14px;
+  padding: 20px;
+ }
+ .right-bottom{
+    font-size: 25px;
+ }
 }
