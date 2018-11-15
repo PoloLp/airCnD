@@ -1,3 +1,15 @@
+
+.review{
+  color:white;
+  margin-bottom: 30px;
+}
+
+.booking-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .right-bottom{
   position: absolute;
   right: 20px;
@@ -9,31 +21,44 @@
   font-size: 40px;
 }
 
-.booking-card{
-  background-color: rgba(240, 240, 240, 0.9);
-  color: black;
-  padding: 40px;
-  width: 400px;
-  border-radius: 5px;
-  text-align: center;
-}
-.review{
-  color:white;
-  margin-bottom: 30px;
+.left-bottom{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background-color: #e2a30f;
+  padding: 10px;
+  border-radius:5px;
+  font-size:16px;
 }
 
-.booking-container{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.left-top{
+  background-color: rgba(240, 240, 240, 0.9);
+  color: black;
+  padding: 30px 20px;
+  border-radius: 5px;
+  text-align: center;
+  position:absolute;
+  left:20px;
+  top:20px;
 }
-@media (max-width: 640px) {
- .booking-card{
-  width: 200px;
-  font-size: 14px;
-  padding: 20px;
+
+.booking-time{
+  display:none;
  }
- .right-bottom{
-    font-size: 25px;
+
+@media (max-width: 1000px){
+  .left-top{
+ display:none
+  }
+  .right-bottom{
+    font-size: 16px;
+    padding: 10px;
+    bottom: 2px;
+    right: 2px;
+ }
+ .booking-time{
+  display:block;
+  color: white;
  }
 }
+

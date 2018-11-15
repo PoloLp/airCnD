@@ -2,30 +2,8 @@
 
 <div class="container">
   <h1  class ="text-center index-container">Find your desk below</h1>
-  <div class="row">
-    <% @desks.reverse.each do |desk|%>
-      <div class="col-xs-12 col-sm-4">
-        <%= link_to desk_path(desk) do %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= safe_desk_img_path(desk) %>')">
-            <div class="card-category">
-              <p>
-                <% desk.desk_average_rating.to_i.times do %>
-                <span class="glyphicon glyphicon-star"></span>
-              <% end %>
-                <% (5 - (desk.desk_average_rating.to_i)).times do %>
-                <span class="glyphicon glyphicon-star-empty"></span>
-              <% end %>
-              </p>
-            </div>
-            <div class="card-description">
-              <h2><%= desk.title %></h2>
-              <p><%= desk.price %>€</p>
-            </div>
-            <img class="card-user" src="">
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'desks/list_desks' %>
+  <%= listsdesks(@desks) %>
 </div>
+
+
