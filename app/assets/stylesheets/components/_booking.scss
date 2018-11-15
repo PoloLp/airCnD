@@ -19,8 +19,14 @@
 }
 .review{
   color:white;
+  margin-bottom: 30px;
 }
 
+.booking-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 @media (max-width: 640px) {
  .booking-card{
   width: 200px;
