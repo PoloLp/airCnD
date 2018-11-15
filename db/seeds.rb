@@ -32,13 +32,94 @@ URL_LIST = [
   "https://images.unsplash.com/photo-1510074377623-8cf13fb86c08?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0a38661364c1153b472b3ec80114c3cf&auto=format&fit=crop&w=1352&q=80"
 ]
 
+ADDRESS_LIST = [
+"1 quai de Paludate, 33800 Bordeaux",
+"1 quai Deschamps, 33000 Bordeaux",
+"1 quai Sainte-Croix, 33800 Bordeaux",
+"10 pl de la Bourse, 33000 Bordeaux",
+"10 place de la Bourse, 33000 Bordeaux",
+"10 rue Labottière, 33000 Bordeaux",
+"10 rue Piliers-de-Tutelle, 33000 Bordeaux",
+"10 rue Sicard, 33000 Bordeaux",
+"115 rue Georges-Bonnac, 33000 Bordeaux",
+"12 place Pey Berland, 33000 Bordeaux",
+"12 rue Ausone, 33000 Bordeaux",
+"120 rue Croix-de-Seguey, 33000 Bordeaux",
+"127 av Thiers, 33100 Bordeaux",
+"13 rue des Bahutiers, 33000 Bordeaux",
+"14 rue Paul Louis Landes, 33000 Bordeaux",
+"15 rue Albert-Pitres, 33000 Bordeaux",
+"15 rue des Bahutiers, 33000 Bordeaux",
+"15 rue des Frères-Bonie, 33000 Bordeaux",
+"18 rue Saint-Joseph, 33000 Bordeaux",
+"19 rue des Bahutiers, 33000 Bordeaux",
+"19 rue Huguerie, 33000 Bordeaux",
+"2 Place de la Comédie, 33000 Bordeaux",
+"2 place de la Comédie, 33000 Bordeaux",
+"2 place de la Comédie, 33000 Bordeaux",
+"2 rue Courbin, 33000 Bordeaux",
+"20 rue du Parlement-Saint-Pierre, 33000 Bordeaux",
+"22 rue de Cursol, 33000 Bordeaux",
+"22 rue du Parlement-Saint-Pierre, 33000 Bordeaux",
+"22 rue Porte de la Monnaie, 33000 Bordeaux",
+"23 allée de Tourny, 33000 Bordeaux",
+"23 bis rue Rode, 33000 Bordeaux",
+"24 rue Lafaurie-Monbadon, 33000 Bordeaux",
+"245 rue Turenne, 33000 Bordeaux",
+"249 cours de la Somme, 33800 Bordeaux",
+"2-5 pl de la Comédie, 33000 Bordeaux",
+"2-5 pl de la Comédie, 33000 Bordeaux",
+"3 Place Pierre Renaudel, 33800 Bordeaux",
+"3 quai Louis XVIII, 33000 Bordeaux",
+"3 rue des Faussets, 33000 Bordeaux",
+"33 rue du Cancera, 33000 Bordeaux",
+"339 rue Georges-Bonnac, 33000 Bordeaux",
+"34 rue Porte-de-la-Monnaie, 33000 Bordeaux",
+"35 rue du Loup, 33000 Bordeaux",
+"36 allée d&#39;Orléans, 33000 Bordeaux",
+"36 rue Saint Sernin, 33000 Bordeaux",
+"37 place Pey-Berland, 33000 Bordeaux",
+"4 cours du 30 Juillet, 33000 Bordeaux",
+"4 Quai des Chartrons, 33000 Bordeaux",
+"4 rue du Puits-d&#39;Escujols, 33000 Bordeaux",
+"40 rue Lecocq, 33000 Bordeaux",
+"43 rue de Cheverus, 33000 Bordeaux",
+"45 rue du loup, 33000 Bordeaux",
+"45-47 rue de la Devise, 33000 Bordeaux",
+"48 Rue des Faures, 33000 Bordeaux",
+"5 pl Pey-Berland, 33000 Bordeaux",
+"5 rue Chauffour, 33000 Bordeaux",
+"5 rue du Hâ, 33000 Bordeaux",
+"5 rue Montesquieu, 33000 Bordeaux",
+"50 rue du Hâ, 33000 Bordeaux",
+"50 rue Saint-Rémi, 33000 Bordeaux",
+"515 av du Maréchal-de-Lattre-de-Tassigny, 33000 Bordeaux",
+"53 Rue Lafaurie Monbadon, 33000 Bordeaux",
+"56 rue du Pas-Saint-Georges, 33000 Bordeaux",
+"59 rue du Palais Gallien, 33000 Bordeaux",
+"59 rue Georges Bonnac, 33000 Bordeaux",
+"6 rue Cancéra, 33000 Bordeaux",
+"6 rue Porte-de-la-Monnaie, 33800 Bordeaux",
+"62 rue Abbé de l’Épée, 33000 Bordeaux",
+"63 rue Borie, 33000 Bordeaux",
+"7 quai de Queyries, 33000 Bordeaux",
+"72-74 rue Paul-Louis-Lande, 33000 Bordeaux",
+"75 quai des Queyries, 33100 Bordeaux",
+"77 rue du Palais-Gallien, 33000 Bordeaux",
+"81 rue Amédée Saint-Germain, 33000 Bordeaux",
+"9 rue Ausone, 33000 Bordeaux",
+"98 rue Fondaudège, 33000 Bordeaux",
+"Quai des Queyries, 33000 Bordeaux"
+]
+
 x_desk = 0
+x_address = 0
 
 Booking.destroy_all
 Desk.destroy_all
 User.destroy_all
 
-puts '*' * 20
+puts '*' * 30
 puts 'Creating 20 fake users...'
 20.times do
   user = User.new(
@@ -51,11 +132,12 @@ puts 'Creating 20 fake users...'
 end
 puts 'Fake users created'
 
-puts '*' * 20
+puts '*' * 30
 puts 'Creating random desk for users...'
 User.all.each do |user|
   rand(1..3).to_i.times do
     picked_url = URL_LIST[x_desk]
+    picked_address = URL_LIST[x_address]
     desk = Desk.new(
                     title: Faker::Movies::StarWars.planet,
                     description: Faker::TvShows::GameOfThrones.quote,
@@ -70,10 +152,11 @@ User.all.each do |user|
 
 
     x_desk < 22 ? x_desk += 1 : x_desk = 0
+    x_address < 77 ? x_address += 1 : x_address = 0
   end
 end
 puts 'Random desk for users created'
-puts '*' * 20
+puts '*' * 30
 
 puts 'Creating random bookings...'
 xtime = Time.current
@@ -96,4 +179,4 @@ xtime = xtime + 1000
 end
 
 puts 'Random bookings created'
-puts '*' * 20
+puts '*' * 30
