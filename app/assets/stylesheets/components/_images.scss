@@ -1,9 +1,15 @@
-.img-medium{
-  height: 500px;
+.img{
+  height:300px;
   margin: 30px 0px;
   border-radius: 5px;
   padding: 20px;
   color: white;
   background-size: cover;
   position: relative;
+  text-align: center;
+
+}
+
+.img-large{
+  height:70vh;
 }

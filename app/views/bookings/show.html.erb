@@ -1,6 +1,6 @@
 <div class="container">
    <h1 class= "text-center"><%= @desk.title %></h1>
-  <div class="img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+  <div class="img img-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
     url('<%= safe_desk_img_path(@booking.desk) %>')">
 
     <div class="booking-card"><p>Booked the <%= @booking.start_at.strftime('%Y-%m-%d') %> at <%= @booking.start_at.strftime('%H:%M') %></p>

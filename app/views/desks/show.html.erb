@@ -1,10 +1,14 @@
 <div class="container" style="margin-bottom:40px ">
   <div class="row card-show">
-    <div class="col-xs-12 col-sm-8 img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= safe_desk_img_path(@desk) %>')">
-      <h1><%= @desk.title %></h1>
-      <p><%= @desk.description %></p>
-      <p><%= @desk.price %>€/hour</p>
+
+    <div class="col-xs-12 col-sm-8">
+      <div class="img" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= safe_desk_img_large_path(@desk) %>')">
+        <h1><%= @desk.title %></h1>
+        <p><%= @desk.description %></p>
+        <p><%= @desk.price %>€/hour</p>
+      </div>
+      <div id="map" style="height: 250px;" data-markers="<%= @markers.to_json %>"></div>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="booking-container">
@@ -17,13 +21,10 @@
         <% end %>
       </div>
     </div>
+    </div>
+    <div class="review">
+      <%= render 'bookings/list_reviews'  %>
+    </div>
   </div>
-
-  <div id="map" style="width: 500px; height: 300px;" data-markers="<%= @markers.to_json %>"></div>
-
-  <div class="review">
-    <%= render 'bookings/list_reviews'  %>
-  </div>
-
-  <%= link_to "Back to desks", root_path, class: "btn btn-warning " %>
+    <%= link_to "Back to desks", root_path, class: "btn btn-warning " %>
 </div>
