@@ -1,5 +1,5 @@
 <div class="container">
-   <h1 class= "text-center"><%= "Congrats #{@user.username}! You just found your profil page" %></h1>
+   <h1 class= "text-center card-margin"><%= "Welcome #{@user.username}! to your profil page" %></h1>
   <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Profil</a></li>
       <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">My Desks</a></li>
@@ -10,47 +10,65 @@
         <div class="text-center">
         <% if @user.avatar.file %>
           <%=  cl_image_tag(@user.avatar, :width=>200, :height=>200, :class=> "img-circle card-margin", :crop=>"scale") %>
-        <% end %>
-        <h1><%=  @user.username %></h1>
-        <h3><%= "email adress : #{@user.email}" %></h3>
-        <%= link_to "Edit your profil", edit_user_registration_path, class: "btn btn-warning card-margin" %>
+          <% end %>
+          <h1 ><%=  @user.username %></h1>
+          <h3><%= "email adress : #{@user.email}" %></h3>
+          <%= link_to "Edit your profil", edit_user_registration_path, class: "btn btn-warning card-margin" %>
 
-        <p style="color:white"><%= "Your account was created : #{@user.created_at}" %></p>
-        <p style="color:white"><%= "Last update on your account : #{@user.updated_at}" %><p>
+          <p><%= "Your account was created : #{@user.created_at}" %></p>
+          <p><%= "Last update on your account : #{@user.updated_at}" %>
+          <p>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane" id="profile">
         <h1 class= "text-center">Your desks</h1>
-        <h1 class= "text-center">Please find all your desks bellow</h1>
-        <%= render 'desks/list_desks' %>
-        <%= listsdesks(@user.desks) %>
+        <h2 class= "text-center">Please find all your desks bellow</h2>
+
+        <% @user.desks.reverse.each do |desk|%>
+          <%= link_to desk_path(desk), class: "product" do %>
+            <div class='product-upvote'>
+              <div class='product-count'><%= desk.price %>€</div>
+            </div>
+
+            <%=  cl_image_tag(desk.photo, :width=>300, :height=>150, :class=> " product-image hidden-xs", :crop=>"fill") %>
+            <div class="product-body">
+              <h3 class= "black"><%= desk.title %></h3>
+              <p class = "black"><%= desk.address%></p>
+            </div>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><a href=""><i class="fas fa-heart"></i></a></li>
+              <li><a href=""><i class="fas fa-share"></i></a></li>
+              <li><a href=""><i class="fas fa-star"></i></a></li>
+              </ul>
+          <% end %>
+        <% end %>
+
       </div>
       <div role="tabpanel" class="tab-pane" id="messages">
         <h1 class= "text-center">Your bookings</h1>
-        <h1 class= "text-center">Please find all your bookings bellow</h1>
+        <h2 class= "text-center">Please find all your bookings bellow</h2>
         <% @user.bookings.reverse.each do |booking|%>
-          <div class="booking-container">
-            <%= link_to desk_path(booking.desk) do %>
-              <div class="card img img-medium" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-              url('<%= safe_desk_img_path(booking.desk) %>')">
-                <div class="card-category">
-                  Popular
-                </div>
-                <div class="card-description">
-                  <h2><%= booking.desk.title %></h2>
-                  <p><%= booking.desk.price %>€</p>
-                </div>
-                <img class="card-user" src="">
-              </div>
-            <% end %>
-            <div class="booking-info">
-              <h2><%= booking.desk.title %></h2>
-              <h3><%= booking.start_at %></h3>
-              <h3><%= booking.end_at %></h3>
+          <div class="product">
+            <div class='product-upvote'>
+              <div class='product-count'><%= booking.desk.price %>€</div>
             </div>
+            <%= link_to desk_path(booking.desk) do %>
+            <%=  cl_image_tag(booking.desk.photo, :width=>300, :height=>150, :class=> " product-image hidden-xs", :crop=>"fill") %>
+            <% end %>
+            <div class="product-body">
+              <h3 class= "black"><%= booking.desk.title %></h3>
+              <p class = "black"><%= booking.desk.address%></p>
+              <%= link_to "My booking", desk_booking_path(booking.desk, booking), class: "btn btn-primary"%>
+            </div>
+            <ul class="list-inline product-controls hidden-sm hidden-xs">
+              <li><a href=""><i class="fas fa-heart"></i></a></li>
+              <li><a href=""><i class="fas fa-share"></i></a></li>
+              <li><a href=""><i class="fas fa-star"></i></a></li>
+              </ul>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+

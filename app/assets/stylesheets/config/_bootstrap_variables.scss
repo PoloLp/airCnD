@@ -51,3 +51,30 @@ $border-radius-small: 2px;
 }
 
 // Override other variables below!
+.nav a{
+  color: white;
+  border-radius: 8px;
+}
+
+.tab-content{
+  background: rgb(240, 240, 240);
+  border-radius:8px;
+  padding: 20px 0px;
+}
+
+.tab-content h1,.tab-content h2, .tab-content p,.tab-content h3{
+  color:black;
+}
+.nav-tabs{
+  border-bottom: 1px solid transparent !important;
+  margin-left: 10px;
+}
+
+.nav-tabs > li.active > a{
+  border-radius: 6px 6px 0px 0px;
+  background: rgb(240, 240, 240);
+}
+.nav-tabs > li a{
+  width: 150px;
+}
+
