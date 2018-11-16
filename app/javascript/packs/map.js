@@ -69,8 +69,8 @@ function desks_index() {
 
     if (markers.length === 0) {
       map.setZoom(1);
-    } else if (markers.length === 1) {
-      map.setZoom(14);
+    } else if (markers.length >= 1) {
+      map.setZoom(11);
       map.setCenter([markers[0].lng, markers[0].lat]);
     } else {
       const bounds = new mapboxgl.LngLatBounds();
@@ -79,10 +79,6 @@ function desks_index() {
       });
       map.fitBounds(bounds, { duration: 0, padding: 75 })
     }
-
-    map.addControl(new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
-    }));
   }
 }
 desks_index();
