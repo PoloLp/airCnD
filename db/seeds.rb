@@ -131,7 +131,7 @@ puts 'Creating 20 fake users...'
     password: "123456"
   )
 
-  user.remote_avatar_url
+  user.remote_avatar_url = avatar_url
   user.save
 
   x_avatar < 21 ? x_avatar += 1 : x_avatar = 1
