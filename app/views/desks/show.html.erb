@@ -7,7 +7,7 @@
         <h1><%= @desk.title %></h1>
         <p><%= @desk.address %></p>
         <p><%= @desk.description %></p>
-        <p class="price"><%= @desk.price %> €/hour</p>
+        <p class="left-bottom"><%= @desk.price %> €/hour</p>
       </div>
       <div id="map" style="height: 250px;" data-markers="<%= @markers.to_json %>"></div>
     </div>
