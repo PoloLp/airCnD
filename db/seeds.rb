@@ -109,35 +109,89 @@ ADDRESS_LIST = [
 "81 rue Amédée Saint-Germain, 33000 Bordeaux",
 "9 rue Ausone, 33000 Bordeaux",
 "98 rue Fondaudège, 33000 Bordeaux",
-"Quai des Queyries, 33000 Bordeaux"
+"Quai des Queyries, 33000 Bordeaux",
+"300 Grove St., San Francisco 94101",
+"451 Gough St., San Francisco 94102",
+"429 Gough St., San Francisco 94102",
+"149 Fell St., San Francisco 94102",
+"450 Hayes St., San Francisco 94117",
+"59 9th St., San Francisco 94103",
+"199 Gough St., San Francisco 94102",
+"609 Hayes St., San Francisco 94102",
+"1658 Market St., San Francisco 94101",
+"672 Geary St., San Francisco 94102",
+"22 Peace Plaza, Ste. 510, San Francisco 94115",
+"1601 Howard St., San Francisco 94103",
+"871 Sutter St., San Francisco 94109",
+"1701 Octavia St., San Francisco 94109",
+"55 Cyril Magnin St., San Francisco 94102",
+"4 Mint Plaza, San Francisco 94103",
+"1525 Fillmore St., San Francisco 94115",
+"1529 Fillmore St., San Francisco 94115",
+"360 Jessie St., San Francisco 94103",
+"1700 Fillmore St., San Francisco 94115",
+"845 Market St., San Francisco 94102",
+"1722 Sacramento St., San Francisco 94109",
+"855 Bush St., San Francisco 94108",
+"370 14th St., San Francisco 94103",
+"888 Howard St., San Francisco 94103",
+"82 14th St., San Francisco 94103",
+"1911 Fillmore St., San Francisco 94115",
+"1760 Polk St., San Francisco 94109",
+"708 Bush St., San Francisco 94108",
+"1250 Jones St., San Francisco 94109",
+"340 Stockton St., San Francisco 94108",
+"826 Folsom St., San Francisco 94107",
+"888 Brannan St., San Francisco 94103",
+"560 Divisadero St., San Francisco 94117",
+"655 Divisadero St., San Francisco 94117",
+"1335 Fulton St., San Francisco 94117",
+"598 Guerrero St., San Francisco 94110",
+"252 Divisadero St., San Francisco 94117",
+"2065 Polk St., San Francisco 94109",
+"151 Third St., San Francisco 94103",
+"557 Valencia St., San Francisco 94110",
+"431 Bush St., San Francisco 94108",
+"306 Broderick St., San Francisco 94117",
+"665 Townsend St., San Francisco 94103",
+"655 Townsend St., San Francisco 94103",
+"669 Townsend St., San Francisco 94103",
+"2223 Market St., San Francisco 94114",
+"2206 Polk St., San Francisco 94109"
 ]
 
 x_desk = 0
 x_address = 0
+x_avatar = 1
 
 Booking.destroy_all
 Desk.destroy_all
 User.destroy_all
 
 puts '*' * 30
-puts 'Creating 20 fake users...'
-20.times do
+puts 'Creating 40 fake users...'
+40.times do
+  avatar_url = "https://res.cloudinary.com/dsnvcscap/image/upload/v1542367683/alumni-191/batch_191-#{x_avatar}.jpg"
   user = User.new(
     username: Faker::Movies::StarWars.character,
     email: Faker::Internet.email,
     created_at: Time.current,
     password: "123456"
   )
-    user.save
+
+  user.remote_avatar_url = avatar_url
+  user.save
+
+  x_avatar < 21 ? x_avatar += 1 : x_avatar = 1
 end
 puts 'Fake users created'
 
 puts '*' * 30
 puts 'Creating random desk for users...'
 User.all.each do |user|
-  rand(1..3).to_i.times do
+  rand(1..2).to_i.times do
     picked_url = URL_LIST[x_desk]
-    picked_address = ADDRESS_LIST[x_address]
+    picked_address = ADDRESS_LIST.sample
     desk = Desk.new(
                     title: Faker::Movies::StarWars.planet,
                     description: Faker::TvShows::GameOfThrones.quote,
@@ -148,8 +202,6 @@ User.all.each do |user|
     desk.remote_photo_url = picked_url
 
     desk.save!
-
-
 
     x_desk < 22 ? x_desk += 1 : x_desk = 0
     x_address < 77 ? x_address += 1 : x_address = 0
@@ -164,7 +216,7 @@ xtime = Time.current
 users = User.all
 desks = Desk.all
 
-20.times do
+50.times do
   id_desk = Desk.all.sample.id
   booking = Booking.new(
                         user: users.sample,

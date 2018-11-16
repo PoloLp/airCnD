@@ -19,7 +19,7 @@
                 <h2><%= desk.title %></h2>
                 <p><%= desk.price %>€</p>
               </div>
-              <img class="card-user" src="">
+              <%= cl_image_tag desk.user.avatar, class: "card-user" %>
             </div>
 
         <% end %>
