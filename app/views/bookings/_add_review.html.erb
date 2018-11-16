@@ -2,8 +2,22 @@
   <%= simple_form_for ([@desk, @booking]) do |f| %>
     <%= f.label :Booking_review, style: "color:white" %>
     <%= f.input_field :review, class: "form-control" %>
-    <%= f.label :Booking_rating, style: "color:white" %>
-    <%= f.input_field :rating, class: "form-control" %>
+
+<fieldset class="rating">
+  <legend><h4> Please rate:</h4></legend>
+  <%= f.radio_button(:rating, "5") %> <%= f.label(:rating.to_s + "_5", "Rocks") %>
+  <br>
+  <%= f.radio_button(:rating, "4") %> <%= f.label(:rating.to_s + "_4", "Pretty good") %>
+  <br>
+  <%= f.radio_button(:rating, "3") %> <%= f.label(:rating.to_s + "_3", "Meh") %>
+  <br>
+  <%= f.radio_button(:rating, "2") %> <%= f.label(:rating.to_s + "_2", "Kinda bad") %>
+  <br>
+  <%= f.radio_button(:rating, "1") %> <%= f.label(:rating.to_s + "_1", "Sucks big time") %>
+</fieldset>
+
     <%= f.button :submit, class: "btn btn-primary" %>
+
+
   <% end %>
 </div>
