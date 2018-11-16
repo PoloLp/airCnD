@@ -14,12 +14,12 @@
     <div class="col-xs-12 col-sm-4">
       <div class="booking-container">
         <%= simple_form_for [@desk, @booking] do |f| %>
-      <%= f.input :start_at, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :end_at, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :start_at, as: :string, required: false, input_html: {class: "datepicker", id: "startAt"} %>
+      <%= f.input :end_at, as: :string, required: false, input_html: {class: "datepicker", id: "endAt"} %>
 
 
 
-          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= f.button :submit, class: "btn btn-primary", id: "button" %>
         <% end %>
       </div>
     </div>

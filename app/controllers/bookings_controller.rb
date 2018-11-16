@@ -1,7 +1,11 @@
+require 'date'
+
 class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @desk = Desk.find(params[:desk_id])
+
+    @duration = (@booking.end_at).hour - (@booking.start_at).hour
   end
 
   def create

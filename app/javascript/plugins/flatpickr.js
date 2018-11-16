@@ -5,5 +5,6 @@ import "flatpickr/dist/themes/material_blue.css" // A path to the theme CSS
 flatpickr(".datepicker", {
   enableTime: true,
   minDate: "today",
-  altInput: true
+  altInput: true,
+  time_24hr: true
 });
