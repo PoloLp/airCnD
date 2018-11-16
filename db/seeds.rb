@@ -114,6 +114,7 @@ ADDRESS_LIST = [
 
 x_desk = 0
 x_address = 0
+x_avatar = 1
 
 Booking.destroy_all
 Desk.destroy_all
@@ -122,13 +123,18 @@ User.destroy_all
 puts '*' * 30
 puts 'Creating 20 fake users...'
 20.times do
+  avatar_url = "https://res.cloudinary.com/dsnvcscap/image/upload/v1542367683/alumni-191/batch_191-#{x_avatar}.jpg"
   user = User.new(
     username: Faker::Movies::StarWars.character,
     email: Faker::Internet.email,
     created_at: Time.current,
     password: "123456"
   )
-    user.save
+
+  user.remote_photo_url
+  user.save
+
+  x_avatar < 21 ? x_avatar += 1 : x_avatar = 1
 end
 puts 'Fake users created'
 
@@ -148,8 +154,6 @@ User.all.each do |user|
     desk.remote_photo_url = picked_url
 
     desk.save!
-
-
 
     x_desk < 22 ? x_desk += 1 : x_desk = 0
     x_address < 77 ? x_address += 1 : x_address = 0
