@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.desk = Desk.find(params[:desk_id])
     @booking.user = current_user
-    if @booking.save!
+    if @booking.save
       redirect_to desk_booking_path(@booking[:desk_id], @booking)
     else
       render "desks/show"
