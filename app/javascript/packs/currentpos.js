@@ -11,8 +11,8 @@ function success(pos) {
     lat: crd.latitude,
     lng: crd.longitude
   };
-console.log(x)
-};
+
+}
 
 function error(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
